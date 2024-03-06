@@ -34,7 +34,7 @@ export const ReceiptCreate1 = () => {
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {
-                navigate('/usedashboard')
+                navigate('/UserDashboard')
             }, 3000);
         } else {
             toast.error(data)
