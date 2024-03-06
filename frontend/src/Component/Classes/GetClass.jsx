@@ -39,7 +39,8 @@ export const GetClass = () => {
         <div>
 
             <input style={{ width: "300px", float: "right", borderRadius: "26px" }} type="text" placeholder='Search' className='form-control text-center' value={search} onChange={(e) => setsearch(e.target.value)} />
-            <Link to={'/class/create'} className="btn btn-info">Create +</Link>
+            <Link to={'/class/create'} className="btn btn-info ">Create +</Link>
+            <Link to={'/AdminDashboard'} className="btn btn-success  ms-5"  >Back</Link>
             <table className="table table-boredered text-center mt-5">
                 <thead>
                     <tr>

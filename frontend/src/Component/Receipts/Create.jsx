@@ -51,7 +51,7 @@ export const ReceiptCreate = () => {
                             <div className="row gap-4">
                                 <div className="col-6 mx-auto" style={{ width: "300px" }}>
                                     <select className="form-control" value={Receipt.StudentID} onChange={(e) => setReceipt({ StudentID: e.target.value, ReceiptAmount: Receipt.ReceiptAmount })}>
-                                        <option value="">Choose UserName</option>
+                                        <option value="">Choose Studnet Name</option>
                                         {ApiData && ApiData.map((data, index) => (
                                             <option key={index} value={data._id}>{data.Name}</option>
 

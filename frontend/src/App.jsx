@@ -47,7 +47,6 @@ export const App = () => {
 
                         <Route path='/ReceiptCreate1' element={<ReceiptCreate1/>} />
                         <Route path='/UserDashboard' element={<UserDashboard />} />
-                        <Route path='/UserDashboard' element={<UserDashboard />} />
                         <Route path='/AdminDashboard' element={<AdminDashboard />} />
                         <Route path='/class' element={<ClassView />} />
                         <Route path='/class/create' element={<ClassCreate />} />

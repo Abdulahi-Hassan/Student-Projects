@@ -28,8 +28,6 @@ const postreceipt = async (req, res) => {
     if (!ClassData) return res.send("ClassData Lama Helin")
     const UserData = await usermodel.findOne({ _id: StudentData.UserID })
     if (!UserData) return res.send("UserData Lama Helin")
-
-
     let TotalAmountPaid = parseFloat(StudentData.AmountPaid + req.body.ReceiptAmount)
     let CurrencyBalance = parseFloat(StudentData.TotalAmount - TotalAmountPaid)
     let CurrencyStatus = ""
@@ -61,9 +59,6 @@ const postreceipt = async (req, res) => {
 
 
     let newreceipt = await receiptmodel.create(req.body)
-
-
-
     let student = await studentmodel.findByIdAndUpdate(req.body.StudentID, {
         AmountPaid: TotalAmountPaid,
         Balance: CurrencyBalance,
