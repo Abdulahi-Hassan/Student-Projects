@@ -63,16 +63,25 @@ export const Login = ({ setuser }) => {
 
 
 export const Change = () => {
-
+let navigate=useNavigate()
     const [Change, setChange] = useState({
         Email: "",
         NewPassword: "",
         Confirm: ""
     })
 
-    const HandleSubmit = (e) => {
+    const HandleSubmit = async (e) => {
         e.preventDefault()
-        console.log(Change)
+        let { data } = await axios.post(endpoint + "/change",Change)
+        if (data.status) {
+            toast.success(data.message)
+            setTimeout(() => {
+            navigate('/login')
+                
+            }, 3000);
+        } else {
+            toast.error(data)
+        }
     }
     return (
         <div className="container d-flex justify-content-center align-items-center mt-5 text-center" >

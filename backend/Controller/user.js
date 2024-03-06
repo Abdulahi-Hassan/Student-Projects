@@ -2,6 +2,7 @@ const { usermodel, uservalidation, loginvalidation } = require('../model/usermod
 let jwt = require('jsonwebtoken')
 const { classmodel } = require('../model/classmodel')
 const bcrypt = require('bcrypt')
+let joi = require('joi')
 const { nextTick } = require('process')
 const { studentmodel } = require('../model/studentmodel')
 require('dotenv').config()
@@ -162,4 +163,16 @@ const login = async (req, res) => {
 
 }
 
-module.exports = { getuser, getuserid, postuser, putuser, deleteuser, login }
+const Change = async (req, res) => {
+
+    let { Email, NewPassword, Confirm } = req.body
+    const { error } = joi.object({ Email: joi.string().required().email(), NewPassword: joi.string().required(), Confirm: joi.string().required() }).validate(req.body)
+    if (error) return res.send(error.message)
+    const use = await usermodel.findOne({ Email: Email })
+    if (!use) return res.send(`${Email} kan waa qalad`)
+    if (NewPassword != Confirm || Confirm != NewPassword) return res.send("Your password is not match")
+    let s = NewPassword = await bcrypt.hash(NewPassword, 10)
+    await usermodel.findByIdAndUpdate(use, { Password: s }, { new: true })
+    res.send({ status: "Success", message: "Successfully Change Password" })
+}
+module.exports = { getuser, getuserid, postuser, putuser, deleteuser, login, Change }
