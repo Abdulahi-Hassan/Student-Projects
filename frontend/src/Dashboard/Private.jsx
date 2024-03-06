@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-export const AllPrivate = ({ data, isopen }) => {
+export const AllPrivate = ({ data, isopen,Student }) => {
     return (
         <div>
             <div className="row">
@@ -12,7 +12,7 @@ export const AllPrivate = ({ data, isopen }) => {
 
                         </div>
                         <div className="col-3">
-                            <Link onClick={() => isopen(true)} className="btn btn-light m-4 " style={{ width: "170px" }}>Dashboard</Link>
+                            <button onClick={() => isopen(true)} className="btn btn-light m-4 " style={{ width: "170px" }}>Dashboard</button>
                         </div>
                         <div className="col-3">
                             <Link to={'/about'} className="btn btn-light m-4 " style={{ width: "170px" }}>About</Link>
@@ -21,8 +21,10 @@ export const AllPrivate = ({ data, isopen }) => {
                             <Link to={'/service'} className="btn btn-light m-4 " style={{ width: "170px" }}>Services</Link>
                         </div>
                         <div className="col-3">
-                            <Link to={'/contuct'} className="btn btn-light m-4 " style={{ width: "170px" }}>Information</Link>
-                        </div>
+                           {Student && (
+                             <Link to={'/ReceiptCreate1'} className="btn btn-light m-4 " style={{ width: "170px" }}>Information</Link>
+                             )}
+                             </div>
                         <div className="col-3">
                         </div>
                     </div>

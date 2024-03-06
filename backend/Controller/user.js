@@ -2,6 +2,7 @@ const { usermodel, uservalidation, loginvalidation } = require('../model/usermod
 let jwt = require('jsonwebtoken')
 const { classmodel } = require('../model/classmodel')
 const bcrypt = require('bcrypt')
+const { receiptmodel } = require('../model/receiptmodel')
 let joi = require('joi')
 const { nextTick } = require('process')
 const { studentmodel } = require('../model/studentmodel')
@@ -139,6 +140,7 @@ const login = async (req, res) => {
         let checkpass = await bcrypt.compare(req.body.Password, UserData.Password)
         if (!checkpass) return res.send("Email or Passowrd Incorrect");
         const StudentData = await studentmodel.findOne({ UserID: UserData._id })
+        const ReceiptData = await receiptmodel.findOne({ StudentID: StudentData })
         const ClassData = await classmodel.findOne({ UserID: UserData._id })
 
 
@@ -149,6 +151,7 @@ const login = async (req, res) => {
             role: UserData.isAdmin,
             Class: ClassData,
             Student: StudentData,
+            receipt:ReceiptData,
             User: UserData
         }, process.env.token);
 

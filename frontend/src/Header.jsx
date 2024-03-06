@@ -3,11 +3,10 @@ export const Header = () => {
     let token = localStorage.getItem("access_token")
     let navigate = useNavigate()
     const Handle = () => {
-       localStorage.removeItem("access_token")
+        localStorage.removeItem("access_token")
         setTimeout(() => {
             navigate("/login")
         },);
-        console.log('welcome')
     }
     return (
         <div >

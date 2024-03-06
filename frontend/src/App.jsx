@@ -32,6 +32,7 @@ import { UserUpdate } from './Component/Users/Update'
 import { UserDelete } from './Component/Users/Delete'
 
 import { SingleUpdate } from './Dashboard/user'
+import { ReceiptCreate1 } from './Dashboard/page'
 export const App = () => {
     let token = localStorage.getItem("access_token")
     return (
@@ -44,6 +45,7 @@ export const App = () => {
                 {token && (
                     <>
 
+                        <Route path='/ReceiptCreate1' element={<ReceiptCreate1/>} />
                         <Route path='/UserDashboard' element={<UserDashboard />} />
                         <Route path='/UserDashboard' element={<UserDashboard />} />
                         <Route path='/AdminDashboard' element={<AdminDashboard />} />
