@@ -10,7 +10,6 @@ export const GetClass = () => {
 
 
 
-    let s = ApiData.filter(data => data._id === Single._id)
 
     const SearchData = ApiData.filter(data => (
         data.ClassName.toLowerCase().includes(search) ||
