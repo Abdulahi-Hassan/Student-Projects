@@ -41,8 +41,8 @@ export const GetStudent = () => {
                     {SearchData && SearchData.map((data, index) => (
                         <tr key={index}>
                             <td>{data._id}</td>
-                            <td>{data.UserID[0].UserName}</td>
-                            <td>{data.ClassID[0].ClassName}</td>
+                            <td>{data.UserID.UserName}</td>
+                            <td>{data.ClassID.ClassName}</td>
                             <td>{data.Name}</td>
                             <td>{data.Phone}</td>
                             <td>{data.Address}</td>

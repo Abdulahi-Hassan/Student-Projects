@@ -3,14 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import { endpoint } from "./api/endpoint"
 import axios from "axios"
-export const Login = ({ setuser }) => {
+export const Login = () => {
     const [LogIn, setLogIn] = useState({ Email: "", Password: "" })
     let navigate = useNavigate()
-
     const HandleSubmit = async (e) => {
         e.preventDefault()
         let { data } = await axios.post(endpoint + '/', LogIn)
-        setuser(data)
         if (data.status) {
             toast.success(data.message)
             localStorage.setItem("access_token", data.access_token)
@@ -63,7 +61,7 @@ export const Login = ({ setuser }) => {
 
 
 export const Change = () => {
-let navigate=useNavigate()
+    let navigate = useNavigate()
     const [Change, setChange] = useState({
         Email: "",
         NewPassword: "",
@@ -72,12 +70,12 @@ let navigate=useNavigate()
 
     const HandleSubmit = async (e) => {
         e.preventDefault()
-        let { data } = await axios.post(endpoint + "/change",Change)
+        let { data } = await axios.post(endpoint + "/change", Change)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {
-            navigate('/login')
-                
+                navigate('/login')
+
             }, 3000);
         } else {
             toast.error(data)

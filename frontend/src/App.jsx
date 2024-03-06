@@ -30,29 +30,21 @@ import { UserView } from './Component/Users/UserView'
 import { UserCreate } from './Component/Users/Create'
 import { UserUpdate } from './Component/Users/Update'
 import { UserDelete } from './Component/Users/Delete'
-import { useState } from 'react'
+
+import { SingleUpdate } from './Dashboard/user'
 export const App = () => {
-    const [user, setuser] = useState(false)
-    let navigate = useNavigate()
     let token = localStorage.getItem("access_token")
-    let decode = jwtDecode(token)
-    let headerdecode = jwtDecode(token, { header: true });
-    if (!headerdecode) {
-        console.log('welcome')
-    }
-
-
-
-
-
     return (
         <div>
 
             <Header />
+
             <Routes>
-                {headerdecode && (
+
+                {token && (
                     <>
-                        <Route path='/UserDashboard' element={<UserDashboard user={user} />} />
+
+                        <Route path='/UserDashboard' element={<UserDashboard />} />
                         <Route path='/UserDashboard' element={<UserDashboard />} />
                         <Route path='/AdminDashboard' element={<AdminDashboard />} />
                         <Route path='/class' element={<ClassView />} />
@@ -70,6 +62,7 @@ export const App = () => {
                         <Route path='/user' element={<UserView />} />
                         <Route path='/user/create' element={<UserCreate />} />
                         <Route path='/user/update/:id/:admin/:username/:status' element={<UserUpdate />} />
+                        <Route path='/user/single/update/:id/:admin/:username/:status' element={<SingleUpdate />} />
                         <Route path='/user/delete/:id' element={<UserDelete />} />
 
 
@@ -85,11 +78,15 @@ export const App = () => {
 
                     </>
                 )}
-                <Route path='/' element={<Home />} />
+
+                {/* <Route path='/private' element={<AllPrivate />} /> */}
+               
+                    <Route path='/' element={<Home />} />
+
                 <Route path='/about' element={<About />} />
                 <Route path='/service' element={<Services />} />
                 <Route path='/contuct' element={<Contuct />} />
-                <Route path='/login' element={<Login user={user} setuser={setuser} />} />
+                <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/forgetpassword' element={<Change />} />
 

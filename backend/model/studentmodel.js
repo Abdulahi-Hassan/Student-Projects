@@ -10,12 +10,12 @@ const studentschema = new Schema({
         required: true
     },
     ClassID: {
-        type: [mongoose.Schema.Types.ObjectId],
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'class'
     },
     UserID: {
-        type: [mongoose.Schema.Types.ObjectId],
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'user'
     },

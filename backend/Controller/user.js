@@ -82,6 +82,9 @@ const putuser = async (req, res) => {
     try {
 
         let Edit = await usermodel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        if (req.file) {
+            Edit.Profile = req.file.filename
+        }
         if (req.body.Password) {
             let salt = await bcrypt.genSalt(10);
             Edit.Password = await bcrypt.hash(req.body.Password, salt)
@@ -135,10 +138,18 @@ const login = async (req, res) => {
         if (!UserData) return res.send("Email or Passowrd Incorrect")
         let checkpass = await bcrypt.compare(req.body.Password, UserData.Password)
         if (!checkpass) return res.send("Email or Passowrd Incorrect");
-        // const Class = await classmodel.findOne({ UserID: UserData })
+        const StudentData = await studentmodel.findOne({ UserID: UserData._id })
+        const ClassData = await classmodel.findOne({ UserID: UserData._id })
+
+
+
+
         let access_token = jwt.sign({
             id: UserData._id,
-            role: UserData.isAdmin
+            role: UserData.isAdmin,
+            Class: ClassData,
+            Student: StudentData,
+            User: UserData
         }, process.env.token);
 
         const { Password, ...info } = UserData._doc
