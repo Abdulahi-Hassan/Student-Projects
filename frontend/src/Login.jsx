@@ -6,7 +6,7 @@ import axios from "axios"
 export const Login = ({ setuser }) => {
     const [LogIn, setLogIn] = useState({ Email: "", Password: "" })
     let navigate = useNavigate()
-    
+
     const HandleSubmit = async (e) => {
         e.preventDefault()
         let { data } = await axios.post(endpoint + '/', LogIn)
@@ -106,7 +106,9 @@ export const Change = () => {
 
 
 
+
 export const Register = () => {
+    let navigate = useNavigate()
     const [User, setUser] = useState({
         UserName: "",
         Email: "",
@@ -114,15 +116,29 @@ export const Register = () => {
         Profile: ""
     })
 
-    const HandleSubmit = (e) => {
+    const HandleSubmit = async (e) => {
         e.preventDefault();
+        let formdata = new FormData();
+        formdata.append("UserName", User.UserName)
+        formdata.append("Email", User.Email)
+        formdata.append("Password", User.Password)
+        formdata.append("Profile", User.Profile)
+        let { data } = await axios.post(endpoint + '/user', formdata)
+        if (data.status) {
+            toast.success(data.message)
+            setTimeout(() => {
+                navigate('/login')
+            }, 3000);
+        } else {
+            toast.error(data)
+        }
 
     }
     return (
         <div>
             <div className="container  d-flex justify-content-center mt-4 align-items-center  text-center" style={{ height: "500px" }}>
                 <div className="card bg-dark mt-5" style={{ width: "490px", height: "430px" }}>
-                    <div className="card-title text-light mt-2"><h1>Registser</h1></div>
+                    <div className="card-title text-light mt-2"><h1>Create User</h1></div>
                     <div className="card-body">
                         <form onSubmit={HandleSubmit}>
                             <div className="row gap-4">
@@ -138,9 +154,15 @@ export const Register = () => {
                                 <div className="col-6 mx-auto" style={{ width: "300px" }}>
                                     <input type="file" className="form-control" placeholder="Enter Your UserName" onChange={(e) => setUser({ Profile: e.target.files[0], Email: User.Email, Password: User.Password, UserName: User.UserName })} />
                                 </div>
+
+
+
+
+
                                 <div className="col-6 mx-auto" style={{ width: "300px" }}>
                                     <button className="btn btn-primary">Submit</button>
                                 </div>
+
                             </div>
                         </form>
                         <Toaster />
