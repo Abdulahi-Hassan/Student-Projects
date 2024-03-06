@@ -1,29 +1,21 @@
-import { StudentView } from '../Component/Students/StudentView'
-import { useState } from 'react'
+import { Link } from 'react-router-dom'
 export const AdminDashboard = () => {
-    const [open, setopen] = useState(false)
-
-    const handle = () => {
-        setopen(true)
-    }
-   
-
     return (
         <div style={{ marginTop: "68px" }}>
             <div className="row">
                 <div className="col-6 bg-danger  " style={{ height: "600px", width: "300px" }}>
                     <div className="mt-4  m-4  ">
                         <div className="col-3">
-                            <button onClick={handle} className="btn btn-light m-3" style={{ width: "170px" }}>Student</button>
+                            <Link to={'/student'} className="btn btn-light m-3" style={{ width: "170px" }}>Student</Link>
                         </div>
                         <div className="col-3">
-                            <button className="btn btn-light m-3 " style={{ width: "170px" }}>Class</button>
+                            <Link to={'/class'} className="btn btn-light m-3 " style={{ width: "170px" }}>Class</Link>
                         </div>
                         <div className="col-3">
-                            <button className="btn btn-light m-3 " style={{ width: "170px" }}>User</button>
+                            <Link to={'/user'} className="btn btn-light m-3 " style={{ width: "170px" }}>User</Link>
                         </div>
                         <div className="col-3">
-                            <button className="btn btn-light m-3 " style={{ width: "170px" }}>Receipt</button>
+                            <Link to={'/receipt'} className="btn btn-light m-3 " style={{ width: "170px" }}>Receipt</Link>
                         </div>
                         <div className="col-3">
                             <button className="btn btn-light m-3 " style={{ width: "170px" }}>Setting</button>
@@ -31,9 +23,7 @@ export const AdminDashboard = () => {
                     </div>
                 </div>
                 <div className="col-6 text-center" style={{ marginTop: "-10px" }}>
-                    {open && (
-                        <StudentView />
-                    )}
+
                 </div>
             </div>
         </div>

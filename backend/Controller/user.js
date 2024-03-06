@@ -131,10 +131,10 @@ const login = async (req, res) => {
         let { error } = loginvalidation(req.body)
         if (error) return res.send(error.message)
         let UserData = await usermodel.findOne({ Email: req.body.Email });
-        const Class = await classmodel.findOne({ UserID: UserData })
         if (!UserData) return res.send("Email or Passowrd Incorrect")
         let checkpass = await bcrypt.compare(req.body.Password, UserData.Password)
         if (!checkpass) return res.send("Email or Passowrd Incorrect");
+        // const Class = await classmodel.findOne({ UserID: UserData })
         let access_token = jwt.sign({
             id: UserData._id,
             role: UserData.isAdmin
@@ -147,7 +147,7 @@ const login = async (req, res) => {
             message: "Succesfully Login in",
             ...info,
             access_token: access_token,
-            id:Class._id
+            // id: `${Class} && ${Class._id}`
         })
 
 
