@@ -40,12 +40,7 @@ export const App = () => {
 
             <Header />
             <Routes>
-
-
-
-
                 <Route path='/UserDashboard' element={<UserDashboard user={user} />} />
-
                 <Route path='/UserDashboard' element={<UserDashboard />} />
                 <Route path='/AdminDashboard' element={<AdminDashboard />} />
                 <Route path='/class' element={<ClassView />} />
@@ -64,8 +59,6 @@ export const App = () => {
                 <Route path='/user/create' element={<UserCreate />} />
                 <Route path='/user/update/:id/:admin/:username/:status' element={<UserUpdate />} />
                 <Route path='/user/delete/:id' element={<UserDelete />} />
-
-
                 <Route path='/' element={<Home />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/service' element={<Services />} />
