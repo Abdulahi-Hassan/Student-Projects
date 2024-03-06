@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect } from "react"
 import { endpoint } from "../api/endpoint"
+import { Link } from "react-router-dom"
 export const UserDashboard = ({ user }) => {
     console.log(user)
     useEffect(() => {
@@ -21,6 +22,18 @@ export const UserDashboard = ({ user }) => {
                         </div>
                         <div className="col-3">
                             <button className="btn btn-light m-4 " style={{ width: "170px" }}>Class</button>
+                        </div>
+                        <div className="col-3">
+                            <Link to={'/class'} className="btn btn-light m-4 " style={{ width: "170px" }}>Class</Link>
+                        </div>
+                        <div className="col-3">
+                            <Link to={'/student'} className="btn btn-light m-4 " style={{ width: "170px" }}>Class</Link>
+                        </div>
+                        <div className="col-3">
+                            <Link to={'/user'} className="btn btn-light m-4 " style={{ width: "170px" }}>Class</Link>
+                        </div>
+                        <div className="col-3">
+                            <Link to={'/receipt'} className="btn btn-light m-4 " style={{ width: "170px" }}>Class</Link>
                         </div>
 
                         <div className="col-6 text-center" style={{ marginTop: "-10px" }}>
