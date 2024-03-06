@@ -3,7 +3,6 @@ import { useEffect } from "react"
 import { endpoint } from "../api/endpoint"
 import { Link } from "react-router-dom"
 export const UserDashboard = ({ user }) => {
-    console.log(user)
     useEffect(() => {
         async function load() {
             let { data } = await axios.get(`${endpoint + '/class'}/${user.id}`)

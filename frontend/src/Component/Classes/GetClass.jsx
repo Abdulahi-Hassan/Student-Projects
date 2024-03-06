@@ -8,10 +8,7 @@ export const GetClass = () => {
     const [search, setsearch] = useState("")
     const [Single, setSingle] = useState([])
 
-
-
-
-    const SearchData = ApiData.filter(data => (
+    const SearchData = ApiData && ApiData.filter(data => (
         data.ClassName.toLowerCase().includes(search) ||
         data.ClassName.includes(search) ||
         data.ClassDate.toLowerCase().includes(search) ||

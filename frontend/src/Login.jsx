@@ -12,10 +12,9 @@ export const Login = ({ setuser }) => {
         let { data } = await axios.post(endpoint + '/', LogIn)
         setuser(data)
         if (data.status) {
-            localStorage.setItem("access_token", data.access_token)
             toast.success(data.message)
+            localStorage.setItem("access_token", data.access_token)
             if (data.isAdmin === "false") {
-                localStorage.setItem("user", data._id)
                 setTimeout(() => {
                     navigate("/UserDashboard")
                 }, 3000);

@@ -1,5 +1,6 @@
 import { Route, Routes, redirect, useNavigate } from 'react-router-dom'
 import { Change, Login, Register } from './Login'
+import { jwtDecode } from 'jwt-decode'
 import { Header } from './Header'
 import { Home } from './Menu/Home'
 import { About } from './Menu/About'
@@ -33,6 +34,15 @@ import { useState } from 'react'
 export const App = () => {
     const [user, setuser] = useState(false)
     let navigate = useNavigate()
+    let token = localStorage.getItem("access_token")
+    let decode = jwtDecode(token)
+    let headerdecode = jwtDecode(token, { header: true });
+    if (!headerdecode) {
+        console.log('welcome')
+    }
+
+
+
 
 
     return (
@@ -40,25 +50,41 @@ export const App = () => {
 
             <Header />
             <Routes>
-                <Route path='/UserDashboard' element={<UserDashboard user={user} />} />
-                <Route path='/UserDashboard' element={<UserDashboard />} />
-                <Route path='/AdminDashboard' element={<AdminDashboard />} />
-                <Route path='/class' element={<ClassView />} />
-                <Route path='/class/create' element={<ClassCreate />} />
-                <Route path='/class/update/:id/:className/:classStatus' element={<ClassUpdate />} />
-                <Route path='/class/delete/:id' element={<ClassDelete />} />
-                <Route path='/student' element={<StudentView />} />
-                <Route path='/student/create' element={<StudentCreate />} />
-                <Route path='/student/update/:id/:N/:P/:G/:A' element={<StudentUpdate />} />
-                <Route path='/student/delete/:id' element={<StudentDelete />} />
-                <Route path='/receipt' element={<ReceiptView />} />
-                <Route path='/receipt/create' element={<ReceiptCreate />} />
-                <Route path='/receipt/update/:Name/:id' element={<ReceiptUpdate />} />
-                <Route path='/receipt/delete/:id' element={<ReceiptDelete />} />
-                <Route path='/user' element={<UserView />} />
-                <Route path='/user/create' element={<UserCreate />} />
-                <Route path='/user/update/:id/:admin/:username/:status' element={<UserUpdate />} />
-                <Route path='/user/delete/:id' element={<UserDelete />} />
+                {headerdecode && (
+                    <>
+                        <Route path='/UserDashboard' element={<UserDashboard user={user} />} />
+                        <Route path='/UserDashboard' element={<UserDashboard />} />
+                        <Route path='/AdminDashboard' element={<AdminDashboard />} />
+                        <Route path='/class' element={<ClassView />} />
+                        <Route path='/class/create' element={<ClassCreate />} />
+                        <Route path='/class/update/:id/:className/:classStatus' element={<ClassUpdate />} />
+                        <Route path='/class/delete/:id' element={<ClassDelete />} />
+                        <Route path='/student' element={<StudentView />} />
+                        <Route path='/student/create' element={<StudentCreate />} />
+                        <Route path='/student/update/:id/:N/:P/:G/:A' element={<StudentUpdate />} />
+                        <Route path='/student/delete/:id' element={<StudentDelete />} />
+                        <Route path='/receipt' element={<ReceiptView />} />
+                        <Route path='/receipt/create' element={<ReceiptCreate />} />
+                        <Route path='/receipt/update/:Name/:id' element={<ReceiptUpdate />} />
+                        <Route path='/receipt/delete/:id' element={<ReceiptDelete />} />
+                        <Route path='/user' element={<UserView />} />
+                        <Route path='/user/create' element={<UserCreate />} />
+                        <Route path='/user/update/:id/:admin/:username/:status' element={<UserUpdate />} />
+                        <Route path='/user/delete/:id' element={<UserDelete />} />
+
+
+
+
+
+
+
+
+
+
+
+
+                    </>
+                )}
                 <Route path='/' element={<Home />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/service' element={<Services />} />

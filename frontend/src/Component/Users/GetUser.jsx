@@ -5,18 +5,21 @@ import { endpoint } from '../../api/endpoint'
 export const GetUser = () => {
     const [ApiData, setApiData] = useState([])
     const [search, setsearch] = useState("")
-    const SearchData = ApiData.filter(data => (
-        data.UserName.toLowerCase().includes(search) ||
-        data.UserName.includes(search)
-    ))
     useEffect(() => {
         async function load() {
+          
             let { data } = await axios.get(endpoint + '/user');
             setApiData(data)
+        
         }
         load()
     }, [endpoint])
 
+
+    const SearchData =ApiData.filter(data => (
+        data.UserName.toLowerCase().includes(search) ||
+        data.UserName.includes(search)
+    ))
 
     return (
         <div>
@@ -37,7 +40,7 @@ export const GetUser = () => {
                 </thead>
 
                 <tbody>
-                    {SearchData && SearchData.map((data, index) => (
+                    {SearchData.map((data, index) => (
                         <tr key={index}>
                             <td>{data._id}</td>
                             <td>{<img src={`http://localhost:3000/images/` + data.Profile} alt='' width="100%" height="100px" style={{ borderRadius: "50%", marginTop: "-10px" }} />}</td>
