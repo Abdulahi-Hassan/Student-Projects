@@ -13,7 +13,7 @@ const examrouter = require('./routes/examrouter')
 const login = require('./routes/login')
 const ConnectedDB = async () => {
     let db = await mongoose.connect(
-        
+
 
         "mongodb+srv://libanabdulahi2024:OZ1NZDQhQAjT43r4@cluster0.zy7osfm.mongodb.net/Student-Project?retryWrites=true&w=majority&appName=Cluster0"
     )
@@ -37,6 +37,11 @@ app.use('/exam', examrouter)
 app.use('/student', studentrouter)
 app.use('/receipt', receiptrouter)
 app.use('/', login)
+app.get('/', (req, res) => {
+
+    res.send('Welcome to my Server Backend')
+
+})
 
 
 
