@@ -1,13 +1,13 @@
 
 import moment from 'moment'
 import axios from 'axios'
-import { endpoint } from '../api/endpoint'
+import { endpoint, endpoint3 } from '../api/endpoint'
 import toast, { Toaster } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 export const Tables = ({ isopen, User, Student, Class }) => {
     let navigate = useNavigate();
     const Handle = async (id) => {
-        let { data } = await axios.delete(`${endpoint + '/user'}/${id}`)
+        let { data } = await axios.delete(`${endpoint3}/${id}`)
         if (data.status) {
             toast.success(data.message)
             localStorage.removeItem("access_token")

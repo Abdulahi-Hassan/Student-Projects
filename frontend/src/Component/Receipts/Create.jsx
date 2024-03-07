@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { endpoint } from "../../api/endpoint";
+import { endpoint, endpoint4 } from "../../api/endpoint";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export const ReceiptCreate = () => {
@@ -21,15 +21,15 @@ export const ReceiptCreate = () => {
 
     useEffect(() => {
         async function load() {
-            let { data } = await axios.get(endpoint + '/student');
+            let { data } = await axios.get(endpoint4);
             setApiData(data)
         }
         load()
-    }, [endpoint])
+    }, [endpoint4])
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
-        let { data } = await axios.post(endpoint + '/receipt', obj)
+        let { data } = await axios.post(endpoint4, obj)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {

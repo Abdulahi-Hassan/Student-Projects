@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
-import { endpoint } from "../../api/endpoint";
+import { endpoint1 } from "../../api/endpoint";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 export const ClassUpdate = () => {
@@ -12,7 +12,7 @@ export const ClassUpdate = () => {
     })
     const HandleSubmit = async (e) => {
         e.preventDefault();
-        let update = `${endpoint + '/class'}/${id}`
+        let update = `${endpoint1}/${id}`
         let { data } = await axios.put(update, Class)
 
         if (data.status) {

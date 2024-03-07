@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
-import { endpoint } from '../../api/endpoint'
+import { endpoint, endpoint3 } from '../../api/endpoint'
 export const GetUser = () => {
     const [ApiData, setApiData] = useState([])
     const [search, setsearch] = useState("")
     useEffect(() => {
         async function load() {
           
-            let { data } = await axios.get(endpoint + '/user');
+            let { data } = await axios.get(endpoint3);
             setApiData(data)
         
         }
         load()
-    }, [endpoint])
+    }, [endpoint3])
 
 
     const SearchData =ApiData.filter(data => (

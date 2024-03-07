@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
-import { endpoint } from "../../api/endpoint";
+import { endpoint, endpoint2 } from "../../api/endpoint";
 import { useNavigate } from "react-router-dom";
 export const StudentCreate = () => {
     let navigate = useNavigate();
@@ -20,7 +20,7 @@ export const StudentCreate = () => {
     const HandleSubmit = async (e) => {
         e.preventDefault();
         console.log(Student)
-        let { data } = await axios.post(endpoint + "/student", Student)
+        let { data } = await axios.post(endpoint2, Student)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {
@@ -39,7 +39,7 @@ export const StudentCreate = () => {
 
     useEffect(() => {
         async function load() {
-            let { data } = await axios.get(endpoint + "/class")
+            let { data } = await axios.get(endpoint2)
             setClass(data)
         }
         load()

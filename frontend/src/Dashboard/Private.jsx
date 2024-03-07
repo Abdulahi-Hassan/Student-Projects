@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom"
-export const AllPrivate = ({ data, isopen,Student }) => {
+import { endpoint5 } from "../api/endpoint"
+export const AllPrivate = ({ data, isopen, Student }) => {
+    let l = data.Profile
+    console.log(l)
     return (
         <div>
             <div className="row">
@@ -7,7 +10,8 @@ export const AllPrivate = ({ data, isopen,Student }) => {
                     <div className="mt-4    " style={{ margin: "32px" }}>
                         <div className="col-3">
                             <Link to={`/user/single/update/${data._id}/${data.Email}/${data.UserName}/${data.Profile}`} style={{ width: "170px" }}>
-                                <img src={`http://localhost:3000/images/${data.Profile}`} alt="" width="200%" height="200%" style={{ borderRadius: "50%", marginLeft: "53px" }} />
+                                <img src={`${`https://student-projects.onrender.com/images`}/${data.Profile}`} alt="" width="200%" height="200%" style={{ borderRadius: "50%", marginLeft: "53px" }} />
+                                <img src={`${`https://student-projects.onrender.com/images`}/${`Profile1709744068627.jpg`}`} alt="" width="200%" height="200%" style={{ borderRadius: "50%", marginLeft: "53px" }} />
                             </Link>
 
                         </div>
@@ -21,10 +25,10 @@ export const AllPrivate = ({ data, isopen,Student }) => {
                             <Link to={'/service'} className="btn btn-light m-4 " style={{ width: "170px" }}>Services</Link>
                         </div>
                         <div className="col-3">
-                           {Student && (
-                             <Link to={'/ReceiptCreate1'} className="btn btn-light m-4 " style={{ width: "170px" }}>Information</Link>
-                             )}
-                             </div>
+                            {Student && (
+                                <Link to={'/ReceiptCreate1'} className="btn btn-light m-4 " style={{ width: "170px" }}>Information</Link>
+                            )}
+                        </div>
                         <div className="col-3">
                         </div>
                     </div>

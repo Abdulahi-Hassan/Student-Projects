@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
-import { endpoint } from '../../api/endpoint'
+import { endpoint, endpoint4 } from '../../api/endpoint'
 import moment from 'moment'
 export const GetReceipt = () => {
     const [ApiData, setApiData] = useState([])
@@ -10,11 +10,11 @@ export const GetReceipt = () => {
         console.log(data)))
     useEffect(() => {
         async function load() {
-            let { data } = await axios.get(endpoint + '/receipt');
+            let { data } = await axios.get(endpoint4);
             setApiData(data)
         }
         load()
-    }, [endpoint])
+    }, [endpoint4])
 
 
     return (

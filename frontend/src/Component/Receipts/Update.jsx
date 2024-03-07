@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
-import { endpoint } from "../../api/endpoint";
+import { endpoint, endpoint4 } from "../../api/endpoint";
 export const ReceiptUpdate = () => {
     const { id, Name } = useParams();
     let navigate = useNavigate()
@@ -19,7 +19,7 @@ export const ReceiptUpdate = () => {
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
-        let { data } = await axios.put(`${endpoint + '/receipt'}/${id}`, obj)
+        let { data } = await axios.put(`${endpoint4}/${id}`, obj)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {

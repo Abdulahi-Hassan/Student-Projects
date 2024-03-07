@@ -8,7 +8,11 @@ export const Login = () => {
     let navigate = useNavigate()
     const HandleSubmit = async (e) => {
         e.preventDefault()
-        let { data } = await axios.post(endpoint + '/', LogIn)
+
+
+       
+        
+        let { data } = await axios.post(endpoint, LogIn)
         if (data.status) {
             toast.success(data.message)
             localStorage.setItem("access_token", data.access_token)

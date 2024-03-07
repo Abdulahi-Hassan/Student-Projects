@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { endpoint } from "../../api/endpoint";
+import { endpoint1 } from '../../api/endpoint'
+
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 export const ClassCreate = () => {
@@ -14,16 +15,16 @@ export const ClassCreate = () => {
 
     useEffect(() => {
         async function load() {
-            let { data } = await axios.get(endpoint + '/user')
+            let { data } = await axios.get(endpoint1)
             setApiData(data)
         }
         load()
-    }, [endpoint])
+    }, [endpoint1])
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
 
-        let { data } = await axios.post(endpoint + '/class', Class)
+        let { data } = await axios.post(endpoint1, Class)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {
