@@ -1,6 +1,5 @@
 import { Route, Routes, redirect, useNavigate } from 'react-router-dom'
 import { Change, Login, Register } from './Login'
-import { jwtDecode } from 'jwt-decode'
 import { Header } from './Header'
 import { Home } from './Menu/Home'
 import { About } from './Menu/About'

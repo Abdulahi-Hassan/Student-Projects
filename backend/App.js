@@ -39,7 +39,7 @@ app.use('/receipt', receiptrouter)
 app.use('/', login)
 app.get('/', (req, res) => {
 
-    res.send('Welcome to my Server Backend')
+    res.send('Welcome to my Server Home Backend')
 
 })
 
