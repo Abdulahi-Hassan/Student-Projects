@@ -113,14 +113,13 @@ const putuser = async (req, res) => {
 
 const deleteuser = async (req, res) => {
     let { id } = req.params;
+    let Remove = await usermodel.findByIdAndDelete(id)
     let ClassData = await classmodel.findOne({ UserID: id })
     let StudentData = await studentmodel.findOne({ UserID: id });
     let ReceiptData = await receiptmodel.find({ StudentID: StudentData._id });
-     await receiptmodel.deleteMany(ReceiptData._id)
-
+    await receiptmodel.deleteMany(ReceiptData)
     await classmodel.findByIdAndDelete(ClassData)
     await studentmodel.findByIdAndDelete(StudentData)
-    let Remove = await usermodel.findByIdAndDelete(id)
     if (!Remove) return res.send('')
     res.status(200).json({
         status: "Success",
