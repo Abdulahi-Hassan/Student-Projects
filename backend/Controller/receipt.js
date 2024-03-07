@@ -77,9 +77,11 @@ const postreceipt = async (req, res) => {
 
 const putreceipt = async (req, res) => {
     let { Increase } = req.body
-    let Edit = await studentmodel.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
-    Edit.Balance = parseInt(Edit.Balance + Increase)
-    Edit.TotalAmount = parseInt(Edit.TotalAmount + Increase)
+    let Edit = await studentmodel.findByIdAndUpdate(req.params.id, {
+        Balance: parseInt(Increase),
+        TotalAmount: parseInt(Increase)
+    }, { new: true })
+
     Edit.Status = "UnPaid"
     await Edit.save()
     res.send({

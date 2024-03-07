@@ -4,28 +4,30 @@
     padding:0;
 }
 .menu{
-    background-color: blue;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.menu ul{
-    display: flex;
-}
-.menu ul li{
-    padding:5px;
-    margin:5px
-}
-.menu ul li a{
-    color:white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-decoration: none;
-    text-align: center;
-    font-size: 20px;
+    background-color: red;
 }
 
-.menu .logo{
-    color:white;
-    font-size: 30px;
-    font-family: fantasy;
+@media screen and (max-width:960px){
+    .full{
+        width:50%;
+        margin:auto;
+        background-color: blue;
+    }
+   
+}
+@media screen and (max-width:660px){
+    .full{
+        width:50%;
+        margin:auto;
+        background-color: blue;
+    }
+   
+}
+@media screen and (max-width:760px){
+    .full{
+        width:50%;
+        margin:auto;
+        background-color: blue;
+    }
+   
 }

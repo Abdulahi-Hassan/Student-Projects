@@ -4,9 +4,9 @@ export const AllPrivate = ({ data, isopen, Student }) => {
     let l = data.Profile
     console.log(l)
     return (
-        <div>
+        <div className="container-fluid" >
             <div className="row">
-                <div className="col-6 bg-danger  " style={{ height: "600px", width: "300px" }}>
+                <div className="col-6 bg-danger  " style={{ height: "600px", width: "500px" }}>
                     <div className="mt-4    " style={{ margin: "32px" }}>
                         <div className="col-3">
                             <Link to={`/user/single/update/${data._id}/${data.Email}/${data.UserName}/${data.Profile}`} style={{ width: "170px" }}>

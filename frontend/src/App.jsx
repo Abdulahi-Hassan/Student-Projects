@@ -1,5 +1,6 @@
 import { Route, Routes, redirect, useNavigate } from 'react-router-dom'
 import { Change, Login, Register } from './Login'
+import './index.css'
 import { Header } from './Header'
 import { Home } from './Menu/Home'
 import { About } from './Menu/About'
@@ -35,7 +36,7 @@ import { ReceiptCreate1 } from './Dashboard/page'
 export const App = () => {
     let token = localStorage.getItem("access_token")
     return (
-        <div>
+        <div className='full'>
 
             <Header />
 

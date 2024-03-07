@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
+import './index.css'
 export const Header = () => {
     let token = localStorage.getItem("access_token")
     let navigate = useNavigate()
@@ -9,8 +10,8 @@ export const Header = () => {
         },);
     }
     return (
-        <div >
-            <nav className="navbar navbar-expand-lg navbar-light fixed-top fs-4  bg-dark" style={{ background: "#000", width: "100%" }}>
+        <div>
+            <nav className="menu navbar navbar-expand-lg navbar-light fixed-top fs-4  bg-dark" style={{ background: "#000", width: "100%" }}>
                 <Link to="/" className="text-white fs-3  mx-5 navbar-brand">TalloSide</Link>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav mx-auto ">
