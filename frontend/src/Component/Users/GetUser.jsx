@@ -46,7 +46,7 @@ export const GetUser = () => {
                  
                         <tr  key={index}  >
                             <td>{data._id}</td>
-                            <td>{<img src={`http://localhost:3000/images/` + data.Profile} alt='' width="140px" height="140px" style={{ borderRadius: "50%", marginTop: "-15px" }} />}</td>
+                            <td>{<img src={ `https://student-projects.onrender.com/images/`+data.Profile} alt='' width="140px" height="140px" style={{ borderRadius: "50%", marginTop: "-15px" }} />}</td>
                             <td>{data.UserName}</td>
                             <td>{data.Email}</td>
                             <td >{data.isAdmin}</td>
