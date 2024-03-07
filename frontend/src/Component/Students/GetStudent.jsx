@@ -1,21 +1,30 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
-import { endpoint, endpoint2 } from '../../api/endpoint'
+import { endpoint } from '../../api/endpoint'
 export const GetStudent = () => {
     const [ApiData, setApiData] = useState([])
     const [search, setsearch] = useState("")
     const SearchData = ApiData.filter(data => (
         data.Name.toLowerCase().includes(search) ||
-        data.Name.includes(search)
+        data.Name.includes(search) ||
+        data.Gender.toLowerCase().includes(search) ||
+        data.Gender.includes(search) ||
+        data.Address.toLowerCase().includes(search) ||
+        data.Address.includes(search) ||
+        data._id.toLowerCase().includes(search) ||
+        data._id.includes(search) ||
+        data.UserID.UserName.toLowerCase().includes(search) ||
+        data.UserID.UserName.includes(search) 
+       
     ))
     useEffect(() => {
         async function load() {
-            let { data } = await axios.get(endpoint2);
+            let { data } = await axios.get(endpoint + '/student');
             setApiData(data)
         }
         load()
-    }, [endpoint2])
+    }, [endpoint])
 
 
     return (

@@ -8,10 +8,8 @@ export const Login = () => {
     let navigate = useNavigate()
     const HandleSubmit = async (e) => {
         e.preventDefault()
-
         let { data } = await axios.post(endpoint, LogIn)
         let User = data.isAdmin === "false"
-        navigate("/UserDashboard")
 
         if (data.status) {
             localStorage.setItem("access_token", data.access_token)
@@ -74,7 +72,7 @@ export const Change = () => {
 
     const HandleSubmit = async (e) => {
         e.preventDefault()
-        let { data } = await axios.post(`https://student-projects.onrender.com/change`, Change)
+        let { data } = await axios.post(endpoint + '/change', Change)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {
@@ -133,7 +131,7 @@ export const Register = () => {
         formdata.append("Email", User.Email)
         formdata.append("Password", User.Password)
         formdata.append("Profile", User.Profile)
-        let { data } = await axios.post(`https://student-projects.onrender.com/user`, formdata)
+        let { data } = await axios.post(endpoint + '/user', formdata)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {

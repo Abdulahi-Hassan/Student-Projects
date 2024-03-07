@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
-import { endpoint, endpoint3 } from '../api/endpoint'
+import { endpoint } from '../api/endpoint'
 export const SingleUpdate = () => {
     let navigate = useNavigate()
     let { id, admin, status, username } = useParams()
@@ -20,7 +20,7 @@ export const SingleUpdate = () => {
         formdata.append('UserName', User.UserName)
         formdata.append('Email', User.Email)
         formdata.append('Profile', User.Profile)
-        let { data } = await axios.put(`${endpoint3}/${id}`, formdata)
+        let { data } = await axios.put(`${endpoint+'/user'}/${id}`, formdata)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {

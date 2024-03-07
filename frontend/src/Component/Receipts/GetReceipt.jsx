@@ -1,20 +1,26 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
-import { endpoint, endpoint4 } from '../../api/endpoint'
+import { endpoint } from '../../api/endpoint'
 import moment from 'moment'
 export const GetReceipt = () => {
     const [ApiData, setApiData] = useState([])
     const [search, setsearch] = useState("")
     const SearchData = ApiData.filter(data => (
-        console.log(data)))
+
+        data.StudentID.Name.toLowerCase().includes(search) ||
+        data.StudentID.Name.includes(search) ||
+        data.Date.toLowerCase().includes(search) ||
+        data.Date.includes(search)
+
+    ))
     useEffect(() => {
         async function load() {
-            let { data } = await axios.get(endpoint4);
+            let { data } = await axios.get(endpoint + '/receipt');
             setApiData(data)
         }
         load()
-    }, [endpoint4])
+    }, [endpoint])
 
 
     return (
@@ -36,7 +42,7 @@ export const GetReceipt = () => {
                 </thead>
 
                 <tbody>
-                    {ApiData && ApiData.map((data, index) => (
+                    {SearchData && SearchData.map((data, index) => (
                         <tr key={index}>
                             <td>{data._id}</td>
                             <td>{data.StudentID.Name}</td>

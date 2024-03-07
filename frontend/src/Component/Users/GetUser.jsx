@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
-import { endpoint, endpoint3 } from '../../api/endpoint'
+import { endpoint} from '../../api/endpoint'
 export const GetUser = () => {
     const [ApiData, setApiData] = useState([])
     const [search, setsearch] = useState("")
     useEffect(() => {
         async function load() {
 
-            let { data } = await axios.get(endpoint3);
+            let { data } = await axios.get(endpoint+'/user');
             setApiData(data)
 
         }
         load()
-    }, [endpoint3])
+    }, [endpoint])
 
 
     const SearchData = ApiData.filter(data => (
@@ -46,7 +46,7 @@ export const GetUser = () => {
                  
                         <tr  key={index}  >
                             <td>{data._id}</td>
-                            <td>{<img src={`https://student-projects.onrender.com/images/` + data.Profile} alt='' width="140px" height="140px" style={{ borderRadius: "50%", marginTop: "-15px" }} />}</td>
+                            <td>{<img src={`http://localhost:3000/images/` + data.Profile} alt='' width="140px" height="140px" style={{ borderRadius: "50%", marginTop: "-15px" }} />}</td>
                             <td>{data.UserName}</td>
                             <td>{data.Email}</td>
                             <td >{data.isAdmin}</td>

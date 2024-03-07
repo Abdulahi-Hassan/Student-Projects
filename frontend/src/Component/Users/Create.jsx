@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { endpoint, endpoint3 } from "../../api/endpoint";
+import { endpoint} from "../../api/endpoint";
 import { useNavigate } from "react-router-dom";
 export const UserCreate = () => {
     let navigate=useNavigate()
@@ -19,7 +19,7 @@ export const UserCreate = () => {
         formdata.append("Email", User.Email)
         formdata.append("Password", User.Password)
         formdata.append("Profile", User.Profile)
-        let { data } = await axios.post(endpoint3, formdata)
+        let { data } = await axios.post(endpoint+'/user', formdata)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {

@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect } from "react"
-import { endpoint, endpoint1 } from "../../api/endpoint"
+import { endpoint} from "../../api/endpoint"
 import { useNavigate, useParams } from "react-router-dom"
 import { Toaster, toast } from "react-hot-toast"
 export const ClassDelete = () => {
@@ -8,7 +8,7 @@ export const ClassDelete = () => {
     let navigate = useNavigate()
     useEffect(() => {
         async function load() {
-            let remove = `${endpoint1}/${id}`
+            let remove = `${endpoint+'/class'}/${id}`
             let { data } = await axios.delete(remove)
             if (data.status) {
                 toast.success(data.message)
@@ -21,7 +21,7 @@ export const ClassDelete = () => {
 
         }
         load()
-    }, [endpoint1])
+    }, [endpoint])
     return (
         <div style={{ marginTop: "140px" }}>
             <Toaster />

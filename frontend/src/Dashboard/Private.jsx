@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import { endpoint5 } from "../api/endpoint"
 export const AllPrivate = ({ data, isopen, Student }) => {
     let l = data.Profile
     console.log(l)
@@ -10,7 +9,7 @@ export const AllPrivate = ({ data, isopen, Student }) => {
                     <div className="mt-4    " style={{ margin: "32px" }}>
                         <div className="col-3">
                             <Link to={`/user/single/update/${data._id}/${data.Email}/${data.UserName}/${data.Profile}`} style={{ width: "170px" }}>
-                                <img src={`https://student-projects.onrender.com/images/` + data.Profile} alt="" width="200%" height="200%" style={{ borderRadius: "70%", marginLeft: "53px" }} />
+                                <img src={`http://localhost:3000/images/` + data.Profile} alt="" width="200%" height="200%" style={{ borderRadius: "70%", marginLeft: "53px" }} />
                             </Link>
 
                         </div>

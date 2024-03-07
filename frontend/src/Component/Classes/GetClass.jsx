@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
 import moment from 'moment'
-import { endpoint1 } from '../../api/endpoint'
+import { endpoint } from '../../api/endpoint'
 export const GetClass = () => {
     const [ApiData, setApiData] = useState([])
     const [search, setsearch] = useState("")
@@ -25,15 +25,14 @@ export const GetClass = () => {
 
     useEffect(() => {
         async function load() {
-            let { data } = await axios.get(endpoint1);
-            console.log(data)
+            let {data}=await axios.get(endpoint+'/class')
             setApiData(data)
-            let { data: Data } = await axios.get(`${endpoint1}/${'65e5de82ac6d72c9d82c61b6'}`);
+            let { data: Data } = await axios.get(`${endpoint+'/class'}/${'65e5de82ac6d72c9d82c61b6'}`);
             setSingle(Data)
         }
 
         load()
-    }, [endpoint1])
+    }, [endpoint])
 
 
     return (
