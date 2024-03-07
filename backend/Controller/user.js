@@ -115,6 +115,9 @@ const deleteuser = async (req, res) => {
     let { id } = req.params;
     let ClassData = await classmodel.findOne({ UserID: id })
     let StudentData = await studentmodel.findOne({ UserID: id });
+    let ReceiptData = await receiptmodel.find({ StudentID: StudentData._id });
+     await receiptmodel.deleteMany(ReceiptData._id)
+
     await classmodel.findByIdAndDelete(ClassData)
     await studentmodel.findByIdAndDelete(StudentData)
     let Remove = await usermodel.findByIdAndDelete(id)
@@ -151,7 +154,7 @@ const login = async (req, res) => {
             role: UserData.isAdmin,
             Class: ClassData,
             Student: StudentData,
-            receipt:ReceiptData,
+            receipt: ReceiptData,
             User: UserData
         }, process.env.token);
 

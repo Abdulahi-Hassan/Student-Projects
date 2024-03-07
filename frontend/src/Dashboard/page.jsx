@@ -3,16 +3,13 @@ import toast, { Toaster } from "react-hot-toast";
 import { endpoint } from "../api/endpoint";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 export const ReceiptCreate1 = () => {
     let navigate = useNavigate()
-    let lo = localStorage.getItem("access_token")
-    let decode = jwtDecode(lo)
-    const { receipt } = decode
+
     let [ApiData, setApiData] = useState([])
     const [Receipt, setReceipt] = useState({
         ReceiptAmount: '',
-        StudentID: receipt.StudentID,
+        StudentID: '',
     })
     let Nus = parseFloat(Receipt.ReceiptAmount)
 
