@@ -1,5 +1,4 @@
-import { ClassCreate } from "../Component/Classes/Create"
 
-export const endpoint = 'http://localhost:3000'
+export const endpoint = 'https://student-projects.onrender.com/'
 
 
