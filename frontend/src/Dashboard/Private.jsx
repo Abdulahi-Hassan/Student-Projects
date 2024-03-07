@@ -10,8 +10,7 @@ export const AllPrivate = ({ data, isopen, Student }) => {
                     <div className="mt-4    " style={{ margin: "32px" }}>
                         <div className="col-3">
                             <Link to={`/user/single/update/${data._id}/${data.Email}/${data.UserName}/${data.Profile}`} style={{ width: "170px" }}>
-                                <img src={`${`https://student-projects.onrender.com/images`}/${data.Profile}`} alt="" width="200%" height="200%" style={{ borderRadius: "50%", marginLeft: "53px" }} />
-                                <img src={`${`https://student-projects.onrender.com/images`}/${`Profile1709744068627.jpg`}`} alt="" width="200%" height="200%" style={{ borderRadius: "50%", marginLeft: "53px" }} />
+                                <img src={`https://student-projects.onrender.com/images/` + data.Profile} alt="" width="200%" height="200%" style={{ borderRadius: "50%", marginLeft: "53px" }} />
                             </Link>
 
                         </div>

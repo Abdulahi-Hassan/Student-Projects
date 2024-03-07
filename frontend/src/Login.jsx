@@ -74,7 +74,7 @@ export const Change = () => {
 
     const HandleSubmit = async (e) => {
         e.preventDefault()
-        let { data } = await axios.post(endpoint + "/change", Change)
+        let { data } = await axios.post(`https://student-projects.onrender.com/change`, Change)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {
@@ -133,7 +133,7 @@ export const Register = () => {
         formdata.append("Email", User.Email)
         formdata.append("Password", User.Password)
         formdata.append("Profile", User.Profile)
-        let { data } = await axios.post(endpoint + '/user', formdata)
+        let { data } = await axios.post(`https://student-projects.onrender.com/user`, formdata)
         if (data.status) {
             toast.success(data.message)
             setTimeout(() => {

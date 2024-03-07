@@ -17,7 +17,7 @@ export const Tables = ({ isopen, User, Student, Class }) => {
         }
     }
     return (
-        <div>
+        <div className='container '>
             {isopen && (
                 <table className="table table-bordered text-center mt-5">
                     <thead>

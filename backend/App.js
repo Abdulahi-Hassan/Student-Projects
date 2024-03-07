@@ -13,8 +13,6 @@ const examrouter = require('./routes/examrouter')
 const login = require('./routes/login')
 const ConnectedDB = async () => {
     let db = await mongoose.connect(
-
-
         "mongodb+srv://libanabdulahi2024:OZ1NZDQhQAjT43r4@cluster0.zy7osfm.mongodb.net/Student-Project?retryWrites=true&w=majority&appName=Cluster0"
     )
     if (db) {

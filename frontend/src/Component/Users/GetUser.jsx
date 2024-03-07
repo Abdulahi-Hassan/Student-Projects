@@ -7,16 +7,16 @@ export const GetUser = () => {
     const [search, setsearch] = useState("")
     useEffect(() => {
         async function load() {
-          
+
             let { data } = await axios.get(endpoint3);
             setApiData(data)
-        
+
         }
         load()
     }, [endpoint3])
 
 
-    const SearchData =ApiData.filter(data => (
+    const SearchData = ApiData.filter(data => (
         data.UserName.toLowerCase().includes(search) ||
         data.UserName.includes(search)
     ))
@@ -45,7 +45,7 @@ export const GetUser = () => {
                     {SearchData.map((data, index) => (
                         <tr key={index}>
                             <td>{data._id}</td>
-                            <td>{<img src={`http://localhost:3000/images/` + data.Profile} alt='' width="100%" height="100px" style={{ borderRadius: "50%", marginTop: "-10px" }} />}</td>
+                            <td>{<img src={`https://student-projects.onrender.com/images/` + data.Profile} alt='' width="100%" height="100px" style={{ borderRadius: "50%", marginTop: "-10px" }} />}</td>
                             <td>{data.UserName}</td>
                             <td>{data.Email}</td>
                             <td>{data.isAdmin}</td>
