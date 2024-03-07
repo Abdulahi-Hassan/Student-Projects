@@ -156,7 +156,7 @@ const login = async (req, res) => {
             Student: StudentData,
             receipt: ReceiptData,
             User: UserData
-        }, process.env.token);
+        }, 'process.env.token');
 
         const { Password, ...info } = UserData._doc
 
