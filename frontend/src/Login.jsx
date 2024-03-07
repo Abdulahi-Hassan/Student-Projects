@@ -9,15 +9,14 @@ export const Login = () => {
     const HandleSubmit = async (e) => {
         e.preventDefault()
 
-
-
-
         let { data } = await axios.post(endpoint, LogIn)
+        let User = data.isAdmin === "false"
+        navigate("/UserDashboard")
+
         if (data.status) {
-            toast.success(data.message)
             localStorage.setItem("access_token", data.access_token)
-         
-            if (data.isAdmin === "false") {
+            toast.success(data.message)
+            if (User) {
                 setTimeout(() => {
                     navigate("/UserDashboard")
                 }, 2000);
