@@ -11,23 +11,14 @@ const receiptrouter = require('./routes/receiptrouter')
 const teacherrouter = require('./routes/teacherrouter')
 const examrouter = require('./routes/examrouter')
 const login = require('./routes/login')
-const ConnectedDB = async () => {
-    let db = await mongoose.connect(
-        "mongodb+srv://libanabdulahi2024:OZ1NZDQhQAjT43r4@cluster0.zy7osfm.mongodb.net/Student-Project?retryWrites=true&w=majority&appName=Cluster0"
-    )
-    if (db) {
-        console.log('mongoose is Connected !')
-    }
 
-}
-ConnectedDB()
 
 
 
 //middleware
+app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json());
-app.use(cors())
 app.use('/user', userrouter)
 app.use('/teacher', teacherrouter)
 app.use('/class', classrouter)
@@ -41,6 +32,15 @@ app.get('/', (req, res) => {
 
 })
 
+const ConnectedDB = async () => {
+    let db = await mongoose.connect(
+        "mongodb+srv://libanabdulahi2024:OZ1NZDQhQAjT43r4@cluster0.zy7osfm.mongodb.net/Student-Project?retryWrites=true&w=majority&appName=Cluster0"
+    )
+    if (db) {
+        console.log('mongoose is Connected !')
+    }
 
+}
+ConnectedDB()
 
 app.listen(3000, () => console.log('Connected !'))
