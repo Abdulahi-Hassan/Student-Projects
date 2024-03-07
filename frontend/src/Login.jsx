@@ -10,20 +10,21 @@ export const Login = () => {
         e.preventDefault()
 
 
-       
-        
+
+
         let { data } = await axios.post(endpoint, LogIn)
         if (data.status) {
             toast.success(data.message)
             localStorage.setItem("access_token", data.access_token)
+         
             if (data.isAdmin === "false") {
                 setTimeout(() => {
                     navigate("/UserDashboard")
-                }, 3000);
+                }, 2000);
             } else {
                 setTimeout(() => {
                     navigate("/AdminDashboard")
-                }, 3000);
+                }, 2000);
             }
         } else {
             toast.error(data)

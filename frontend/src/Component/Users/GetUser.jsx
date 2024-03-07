@@ -29,9 +29,9 @@ export const GetUser = () => {
             <Link to={'/AdminDashboard'} className="btn btn-success  ms-5"  >Back</Link>
 
             <table className="table table-boredered text-center mt-5">
-                <thead>
-                    <tr>
-                        <th>ID</th>
+                <thead >
+                    <tr >
+                        <th >ID</th>
                         <th>Profile</th>
                         <th>UserName</th>
                         <th>Email</th>
@@ -41,14 +41,15 @@ export const GetUser = () => {
                     </tr>
                 </thead>
 
-                <tbody>
-                    {SearchData.map((data, index) => (
-                        <tr key={index}>
+                <tbody >
+                  {SearchData.map((data, index) => (
+                 
+                        <tr  key={index}  >
                             <td>{data._id}</td>
-                            <td>{<img src={`https://student-projects.onrender.com/images/` + data.Profile} alt='' width="100%" height="100px" style={{ borderRadius: "50%", marginTop: "-10px" }} />}</td>
+                            <td>{<img src={`https://student-projects.onrender.com/images/` + data.Profile} alt='' width="140px" height="140px" style={{ borderRadius: "50%", marginTop: "-15px" }} />}</td>
                             <td>{data.UserName}</td>
                             <td>{data.Email}</td>
-                            <td>{data.isAdmin}</td>
+                            <td >{data.isAdmin}</td>
                             <td>{data.Status}</td>
                             <td>{
                                 <div>
@@ -59,7 +60,9 @@ export const GetUser = () => {
                             }
                             </td>
                         </tr>
+                 
                     ))}
+                  
                 </tbody>
             </table>
         </div>
