@@ -3,14 +3,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import { endpoint } from "./api/endpoint"
 import axios from "axios"
+
 export const Login = () => {
     const [LogIn, setLogIn] = useState({ Email: "", Password: "" })
     let navigate = useNavigate()
+    
     const HandleSubmit = async (e) => {
         e.preventDefault()
         let { data } = await axios.post(endpoint, LogIn)
         let User = data.isAdmin === "false"
-
         if (data.status) {
             localStorage.setItem("access_token", data.access_token)
             toast.success(data.message)

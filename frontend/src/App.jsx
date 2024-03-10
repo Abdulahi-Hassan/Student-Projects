@@ -1,5 +1,6 @@
-import { Route, Routes, redirect, useNavigate } from 'react-router-dom'
+import { Route, Routes, redirect, Navigate } from 'react-router-dom'
 import { Change, Login, Register } from './Login'
+import {NotFoundpage} from './Menu/NotFound'
 import './index.css'
 import { Header } from './Header'
 import { Home } from './Menu/Home'
@@ -82,8 +83,8 @@ export const App = () => {
 
                 {/* <Route path='/private' element={<AllPrivate />} /> */}
                
-                    <Route path='/' element={<Home />} />
-
+                <Route path='/' element={<Home />} />
+                <Route path='*' element={<  NotFoundpage/>} />
                 <Route path='/about' element={<About />} />
                 <Route path='/service' element={<Services />} />
                 <Route path='/contuct' element={<Contuct />} />

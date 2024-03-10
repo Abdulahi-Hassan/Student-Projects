@@ -81,12 +81,13 @@ export const StudentCreate = () => {
                                 <div className="col-6 mx-auto" style={{ width: "300px" }}>
                                     <input type="text" className="form-control" value={Student.Phone} placeholder="Enter Your Phone" onChange={(e) => setStudent({ Phone: e.target.value, ClassID: Student.ClassID, Gender: Student.Gender, UserID: Student.UserID, Name: Student.Name, Address: Student.Address })} />
                                 </div>
-                                <div className="col-6 mx-auto" style={{ width: "300px" }}>
+                                <div className="col-6 mx-auto form-control" style={{ width: "280px" }}>
                                     <select className="form-control" value={Student.Gender} onChange={(e) => setStudent({ Gender: e.target.value, Phone: Student.Phone, UserID: Student.UserID, ClassID: Student.ClassID, Name: Student.Name, Address: Student.Address })}>
                                         <option value="">Choose Gender</option>
                                         <option value="Female">Female</option>
                                         <option value="Male">Male</option>
                                     </select >
+                                    
                                 </div>
                                 <div className="col-6 mx-auto" style={{ width: "300px" }}>
                                     <input type="text" className="form-control" placeholder="Enter Your Address" value={Student.Address} onChange={(e) => setStudent({ Address: e.target.value, ClassID: Student.ClassID, UserID: Student.UserID, Phone: Student.Phone, Gender: Student.Gender, Name: Student.Name })} />

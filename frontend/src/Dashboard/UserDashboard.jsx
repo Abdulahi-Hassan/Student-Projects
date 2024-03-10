@@ -1,9 +1,7 @@
 
 import { useState } from "react"
 import { jwtDecode } from 'jwt-decode'
-import { Link, useNavigate } from "react-router-dom"
 import { AllPrivate } from "./Private"
-import toast, { Toaster } from "react-hot-toast"
 import { Tables } from "./Table"
 export const UserDashboard = () => {
     let token = localStorage.getItem("access_token");
