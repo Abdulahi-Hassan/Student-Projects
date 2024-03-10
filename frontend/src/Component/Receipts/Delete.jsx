@@ -8,7 +8,7 @@ export const ReceiptDelete = () => {
     let { id } = useParams()
     useEffect(() => {
         async function load() {
-            let { data } = await axios.delete(`${endpoint+'/receipt'}/${id}`)
+            let { data } = await axios.delete(`${endpoint+"/receipt"}/${id}`)
             if (data.status) {
                 toast.success(data.message)
                 setTimeout(() => {
@@ -19,7 +19,7 @@ export const ReceiptDelete = () => {
             }
         }
         load()
-    }, [endpoint4])
+    }, [endpoint])
     return (
         <div style={{ marginTop: "140px" }}>
             <Toaster />
